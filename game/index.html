@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Warung Rush — Indonesian Street Food Game</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="stage">
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="brand">WARUNG <span>RUSH</span></div>
+    <div class="stat"><span class="lbl">SCORE</span><b id="score">0</b></div>
+    <div class="stat"><span class="lbl">COINS</span><b id="coins">0</b></div>
+    <div class="stat" id="comboStat"><span class="lbl">COMBO</span><b id="combo">x1</b></div>
+    <div class="stat"><span class="lbl">LEVEL</span><b id="level">1</b></div>
+    <div class="stat" id="timeStat"><span class="lbl">TIME LEFT</span><b id="time">90</b></div>
+    <div class="spacer"></div>
+    <button class="hbtn" id="muteBtn" title="Sound on/off (M)">SOUND: ON</button>
+    <button class="hbtn" id="pauseBtn" title="Pause (P)">PAUSE</button>
+    <button class="hbtn" id="restartBtn" title="Restart">RESTART</button>
+  </div>
+
+  <!-- Customers -->
+  <div id="customers" class="hidden"></div>
+
+  <!-- Stations -->
+  <div id="stations" class="hidden"></div>
+
+  <!-- Tray -->
+  <div id="traybar" class="hidden">
+    <div class="traylabel">TRAY<small>tap a dish, then tap a customer</small></div>
+    <div id="tray"></div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="floaters"></div>
+
+  <!-- Start screen -->
+  <div id="startScreen" class="screen">
+    <h1 class="logo">WARUNG <span class="rush">RUSH</span></h1>
+    <div class="tagline">Run the busiest street-food stall in town!</div>
+    <div class="panel">
+      <div class="howto">
+        <b>1. Cook:</b> tap a station button to start cooking a dish. Watch the timer — food <b>burns</b> if left too long!<br>
+        <b>2. Collect:</b> cooked dishes go to your tray. Tap a tray dish to pick it up.<br>
+        <b>3. Serve:</b> tap the customer who ordered that dish before their patience bar runs out.<br>
+        <b>4. Combo:</b> fast correct serves build your combo — up to <b>x5 score</b>. Wrong dish or a walk-away resets it.<br>
+        <b>Goal:</b> serve as many customers as you can in <b>90 seconds</b> across 3 levels. It gets faster!
+      </div>
+      <div class="dishrow" id="menuRow"></div>
+    </div>
+    <button class="bigbtn" id="startBtn">START COOKING</button>
+    <div class="subnote">Best score: <b id="bestStart">0</b> &nbsp;•&nbsp; P = pause &nbsp;•&nbsp; M = mute</div>
+  </div>
+
+  <!-- Pause overlay -->
+  <div id="pauseScreen" class="screen hidden">
+    <h1 class="logo" style="font-size:64px;">PAUSED</h1>
+    <div class="tagline">Take a breath, chef. The wok is waiting.</div>
+    <button class="bigbtn" id="resumeBtn">RESUME</button>
+    <div class="subnote">Press P to resume</div>
+  </div>
+
+  <!-- Game over screen -->
+  <div id="overScreen" class="screen hidden">
+    <h1 class="logo" style="font-size:64px;">TIME'S UP!</h1>
+    <div class="tagline">The stall closes for today.</div>
+    <div class="panel">
+      <div class="finalscore">Final Score: <b id="finalScore">0</b></div>
+      <div class="finalscore" style="font-size:22px;">Coins earned: <b id="finalCoins" style="font-size:28px;">0</b> &nbsp;•&nbsp; Dishes served: <b id="finalServed" style="font-size:28px;">0</b> &nbsp;•&nbsp; Best combo: <b id="finalCombo" style="font-size:28px;">x1</b></div>
+      <div class="finalscore" style="font-size:22px;">Customers lost: <b id="finalLost" style="font-size:28px;">0</b></div>
+      <div id="newBest" class="newbest hidden">NEW HIGH SCORE!</div>
+      <div class="finalscore" style="font-size:20px;">High Score: <b id="bestOver" style="font-size:26px;">0</b></div>
+    </div>
+    <button class="bigbtn" id="againBtn">PLAY AGAIN</button>
+  </div>
+</div>
+<script src="./main.js"></script>
+</body>
+</html>
+
